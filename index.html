@@ -17,6 +17,7 @@
 <body>
 <a class="skip" href="#main" data-en="Skip to content">К содержанию</a>
 
+<div class="progress" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap top__in">
     <a class="brand" href="#hero" data-en="Aisylu Zaripova">Айсылу Зарипова</a>
@@ -49,10 +50,23 @@
         <a class="btn" href="https://t.me/ais_zar" target="_blank" rel="noopener" data-en="Message me on Telegram">Написать в Telegram</a>
         <a class="btn btn--ghost" href="#cases" data-en="See case studies">Смотреть кейсы</a>
       </div>
+      <ul class="facts">
+        <li><b>6+</b><span data-en="years in digital">лет в digital</span></li>
+        <li><b>16</b><span data-en="brand cases">кейсов с брендами</span></li>
+        <li><b>13</b><span data-en="niches">ниш</span></li>
+        <li><b>12</b><span data-en="social platforms">соцсетей</span></li>
+      </ul>
     </div>
     <div class="hero__photo">
       <div class="hero__sun" aria-hidden="true"></div>
+      <div class="hero__dot" aria-hidden="true"></div>
       <img src="assets/aisylu-paris.jpg" width="1076" height="1613" alt="Айсылу Зарипова на фоне Эйфелевой башни" data-en-alt="Aisylu Zaripova by the Eiffel Tower">
+      <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="60" fill="#cfe5f4"/>
+        <defs><path id="bp" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <g class="badge__spin"><text><textPath href="#bp" textLength="270">SMM ✦ MARKETING ✦ CONTENT ✦ REELS ✦</textPath></text></g>
+        <path d="M60 40 l5.5 14.5 L80 60 l-14.5 5.5 L60 80 l-5.5-14.5 L40 60 l14.5-5.5z" fill="#f47b2a"/>
+      </svg>
       <ul class="geo" aria-label="География работы" data-en-aria-label="Where I work">
         <li class="geo__1" data-en="USA">США</li>
         <li class="geo__2" data-en="UAE">ОАЭ</li>
@@ -63,9 +77,15 @@
   </div>
 </section>
 
+<div class="ticker" aria-label="Бренды, с которыми я работала" data-en-aria-label="Brands I have worked with">
+  <ul class="ticker__row">
+    <li>Shot of Art</li><li>Vania Mania Kids</li><li>Love &amp; Crafted</li><li>SUPERPET</li><li>Wonder Family</li><li>Express.Doctor</li><li>NFO vitamins</li><li>ZILA</li><li>IT.Arti</li><li>GORA Group</li><li>Homeinq</li><li>Sokolworkshop</li>
+  </ul>
+</div>
+
 <section class="about" id="about">
   <div class="wrap about__in">
-    <img class="about__photo" src="assets/aisylu-cafe.jpg" width="1076" height="1613" loading="lazy" alt="Айсылу в парижском кафе с круассаном и кофе" data-en-alt="Aisylu at a Paris café with a croissant and coffee">
+    <div class="about__pic"><img class="about__photo" src="assets/aisylu-cafe.jpg" width="1076" height="1613" loading="lazy" alt="Айсылу в парижском кафе с круассаном и кофе" data-en-alt="Aisylu at a Paris café with a croissant and coffee"><span class="about__tag" data-en="From Kazan to the world">Из Казани в мир</span></div>
     <div class="about__text">
       <h2 data-en="About me">Обо мне</h2>
       <p data-en="Hi! I’m Aisylu, and I’ve been doing social media marketing for 6+ years. Since 2021 I’ve worked with brands from different countries: the USA, Europe, the Middle East and the CIS.">Привет! Меня зовут Айсылу, я занимаюсь продвижением в социальных сетях уже 6+ лет. С 2021 года работаю с брендами из разных стран — США, Европа, Ближний Восток, СНГ.</p>
@@ -129,14 +149,14 @@
     <div class="tools">
       <div>
         <h3 data-en="Social networks">Социальные сети</h3>
-        <ul class="chips chips--sky">
-          <li>Instagram</li><li>Facebook</li><li>TikTok</li><li>YouTube</li><li>LinkedIn</li><li>Pinterest</li><li>Telegram</li><li>Snapchat</li><li data-en="VK">ВКонтакте</li><li data-en="Odnoklassniki">Одноклассники</li><li data-en="Dzen">Дзен</li><li data-en="Yandex Rhythm">Яндекс Ритм</li>
+        <ul class="chips chips--icons">
+          <li><img src="assets/icons/instagram.png" alt="" width="28" height="28" loading="lazy">Instagram</li><li><img src="assets/icons/facebook.png" alt="" width="28" height="28" loading="lazy">Facebook</li><li><img src="assets/icons/tiktok.png" alt="" width="28" height="28" loading="lazy">TikTok</li><li><img src="assets/icons/youtube.png" alt="" width="28" height="28" loading="lazy">YouTube</li><li><img src="assets/icons/linkedin.png" alt="" width="28" height="28" loading="lazy">LinkedIn</li><li><img src="assets/icons/pinterest.png" alt="" width="28" height="28" loading="lazy">Pinterest</li><li><img src="assets/icons/telegram.png" alt="" width="28" height="28" loading="lazy">Telegram</li><li><img src="assets/icons/snapchat.png" alt="" width="28" height="28" loading="lazy">Snapchat</li><li><img src="assets/icons/vk.png" alt="" width="28" height="28" loading="lazy"><span data-en="VK">ВКонтакте</span></li><li><img src="assets/icons/ok.png" alt="" width="28" height="28" loading="lazy"><span data-en="Odnoklassniki">Одноклассники</span></li><li><img src="assets/icons/dzen.png" alt="" width="28" height="28" loading="lazy"><span data-en="Dzen">Дзен</span></li><li><img src="assets/icons/ritm.png" alt="" width="28" height="28" loading="lazy"><span data-en="Yandex Rhythm">Яндекс Ритм</span></li>
         </ul>
       </div>
       <div>
         <h3 data-en="Tools and services">Инструменты и сервисы</h3>
-        <ul class="chips chips--sun">
-          <li>ChatGPT</li><li>Claude</li><li>Midjourney</li><li>Canva</li><li>CapCut</li><li>Edits</li><li>Descript</li><li>HeyGen</li><li>Kling AI</li><li>Wix</li><li>Tilda</li>
+        <ul class="chips chips--icons">
+          <li><img src="assets/icons/chatgpt.png" alt="" width="28" height="28" loading="lazy">ChatGPT</li><li><img src="assets/icons/claude.png" alt="" width="28" height="28" loading="lazy">Claude</li><li><img src="assets/icons/midjourney.png" alt="" width="28" height="28" loading="lazy">Midjourney</li><li><img src="assets/icons/canva.png" alt="" width="28" height="28" loading="lazy">Canva</li><li><img src="assets/icons/capcut.png" alt="" width="28" height="28" loading="lazy">CapCut</li><li><img src="assets/icons/edits.png" alt="" width="28" height="28" loading="lazy">Edits</li><li><img src="assets/icons/descript.png" alt="" width="28" height="28" loading="lazy">Descript</li><li><img src="assets/icons/heygen.png" alt="" width="28" height="28" loading="lazy">HeyGen</li><li><img src="assets/icons/kling.png" alt="" width="28" height="28" loading="lazy">Kling AI</li><li><img src="assets/icons/wix.png" alt="" width="28" height="28" loading="lazy">Wix</li><li><img src="assets/icons/tilda.png" alt="" width="28" height="28" loading="lazy">Tilda</li>
         </ul>
       </div>
     </div>
