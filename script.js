@@ -9,8 +9,8 @@
       desc: document.querySelector('meta[name="description"]').content
     },
     en: {
-      title: 'Aisylu Zaripova — international marketer and SMM specialist',
-      desc: 'Portfolio of Aisylu Zaripova: 6+ years in SMM, brands from the USA, the UAE, Europe and the CIS. Cases, services, reviews and contacts.'
+      title: document.body.dataset.titleEn || 'Aisylu Zaripova — international marketer and SMM specialist',
+      desc: document.body.dataset.descEn || 'Portfolio of Aisylu Zaripova: 6+ years in SMM, brands from the USA, the UAE, Europe and the CIS. Cases, services, reviews and contacts.'
     }
   };
   var textNodes = document.querySelectorAll('[data-en]');
@@ -72,6 +72,56 @@
     });
   });
 
+  /* ---------- Case preview modal ---------- */
+  var modal = document.querySelector('.cmodal');
+  if (modal && modal.showModal) {
+    var mImg = modal.querySelector('.cmodal__media img');
+    var opener = null;
+    function fill(card) {
+      var img = card.querySelector('img');
+      mImg.src = img.getAttribute('src');
+      modal.querySelector('.cmodal__media').classList.toggle('is-logo', img.classList.contains('is-logo'));
+      modal.querySelector('.cmodal__meta').textContent = card.querySelector('.case__meta').textContent;
+      modal.querySelector('#cmodal-title').textContent = card.querySelector('h4').textContent;
+      modal.querySelector('.cmodal__desc').textContent = card.querySelector(':scope > p:not([class])').textContent;
+      var extra = card.querySelector('.case__extra');
+      var hasHl = extra.querySelector('.case__hl');
+      var list = card.querySelector(':scope > ul');
+      modal.querySelector('.cmodal__list').innerHTML = hasHl ? '' : (list ? '<ul>' + list.innerHTML + '</ul>' : '');
+      modal.querySelector('.cmodal__extra').innerHTML = extra.innerHTML;
+    }
+    document.querySelectorAll('.case__open').forEach(function (b) {
+      b.addEventListener('click', function () {
+        opener = b;
+        fill(b.closest('.case'));
+        modal.showModal();
+        modal.querySelector('.cmodal__in').scrollTop = 0;
+        doc.classList.add('is-modal');
+      });
+    });
+    document.querySelectorAll('.case img').forEach(function (img) {
+      img.addEventListener('click', function () { img.closest('.case').querySelector('.case__open').click(); });
+    });
+    modal.querySelector('.cmodal__close').addEventListener('click', function () { modal.close(); });
+    modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
+    modal.addEventListener('close', function () {
+      doc.classList.remove('is-modal');
+      if (opener) opener.focus();
+    });
+  }
+
+  /* ---------- Image lightbox (case pages) ---------- */
+  var lb = document.querySelector('.lightbox');
+  if (lb && lb.showModal) {
+    document.querySelectorAll('.shot').forEach(function (b) {
+      b.addEventListener('click', function () {
+        lb.querySelector('img').src = b.querySelector('img').getAttribute('src');
+        lb.showModal();
+      });
+    });
+    lb.addEventListener('click', function () { lb.close(); });
+  }
+
   /* ---------- Ticker: duplicate the row for a seamless loop ---------- */
   var row = document.querySelector('.ticker__row');
   if (row) {
@@ -110,7 +160,7 @@
   }
 
   var groups = ['.about__pic', '.about__text', '.sec h2', '.sec__lead', '.res', '.tools > div', '.chips--lg li',
-    '.services li', '.ai__list li', '.tabs', '.rev', '.contact__box'];
+    '.services li', '.ai__list li', '.tabs', '.rev', '.contact__box', '.cnums li', '.more__list li', '.shots-note'];
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
       if (!en.isIntersecting) return;
