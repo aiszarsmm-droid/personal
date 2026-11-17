@@ -91,7 +91,7 @@
       modal.querySelector('.cmodal__list').innerHTML = hasHl ? '' : (list ? '<ul>' + list.innerHTML + '</ul>' : '');
       modal.querySelector('.cmodal__extra').innerHTML = extra.innerHTML;
     }
-    document.querySelectorAll('.case__open, .best__open').forEach(function (b) {
+    document.querySelectorAll('.case__open, .best__open, .js-case').forEach(function (b) {
       b.addEventListener('click', function () {
         opener = b;
         fill(b.dataset.case ? document.getElementById(b.dataset.case) : b.closest('.case'));
@@ -124,6 +124,54 @@
       });
     });
     lb.addEventListener('click', function () { lb.close(); });
+  }
+
+  /* ---------- World map ---------- */
+  var wmap = document.querySelector('.wmap');
+  if (wmap) {
+    var regionEls = document.querySelectorAll('#map [data-region]');
+    function pick(r) {
+      regionEls.forEach(function (el) {
+        var on = el.dataset.region === r;
+        if (el.classList.contains('wmap__list')) el.hidden = !on;
+        else if (el.tagName === 'BUTTON') el.setAttribute('aria-pressed', String(on));
+        else el.classList.toggle('is-on', on);
+      });
+    }
+    document.querySelectorAll('#map .pin, #map .wmap__chip').forEach(function (b) {
+      b.addEventListener('click', function () { pick(b.dataset.region); });
+    });
+    pick('usa');
+  }
+
+  /* ---------- Numbers: count up and start tile animations when visible ---------- */
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countTo(el) {
+    var m = /^(\D*)([\d\s ]+)(\D*)$/.exec(el.textContent.trim());
+    if (!m) return;
+    var target = parseInt(m[2].replace(/\D/g, ''), 10), start = null, dur = 1600;
+    function fmt(n) { return target >= 10000 ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : String(n); }
+    function step(ts) {
+      if (start === null) start = ts;
+      var t = Math.min(1, (ts - start) / dur), e = 1 - Math.pow(1 - t, 4);
+      el.textContent = m[1] + fmt(Math.round(target * e)) + m[3];
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var tiles = document.querySelectorAll('.tile, #map');
+  if (still || !('IntersectionObserver' in window)) {
+    tiles.forEach(function (t) { t.classList.add('is-on'); });
+  } else {
+    var tio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        tio.unobserve(en.target);
+        en.target.classList.add('is-on');
+        en.target.querySelectorAll('[data-count]').forEach(countTo);
+      });
+    }, { threshold: 0.35 });
+    tiles.forEach(function (t) { tio.observe(t); });
   }
 
   /* ---------- Ticker: duplicate the row for a seamless loop ---------- */
@@ -164,7 +212,7 @@
   }
 
   var groups = ['.about__pic', '.about__text', '.sec h2', '.sec__lead', '.res', '.tools > div', '.chips--lg li',
-    '.services li', '.ai__list li', '.best__card', '.tabs', '.rev', '.contact__box', '.cnums li', '.more__list li', '.shots-note'];
+    '.services li', '.ai__list li', '.best__card', '.tile', '.wmap', '.tabs', '.rev', '.contact__box', '.cnums li', '.more__list li', '.shots-note'];
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
       if (!en.isIntersecting) return;

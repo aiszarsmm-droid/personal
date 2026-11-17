@@ -208,6 +208,7 @@ def page(slug, c, others):
         </div>
         <ul class="contact__list">
           <li><span>Telegram</span><a href="{TG}" target="_blank" rel="noopener">@ais_zar</a></li>
+          <li><span>Email</span><a href="mailto:aiszar.smm@gmail.com">aiszar.smm@gmail.com</a></li>
           <li><span data-en="WhatsApp / Calls">WhatsApp / Звонки</span><a href="https://wa.me/79872375510" target="_blank" rel="noopener">+7 (987) 237-55-10</a></li>
         </ul>
       </div>
