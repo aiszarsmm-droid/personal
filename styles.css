@@ -647,3 +647,20 @@ html.is-modal { overflow: hidden; }
   .pin__dot { width: 14px; height: 14px; font-size: 0; }
   .pin[aria-pressed="true"] .pin__dot { transform: scale(1.4); }
 }
+
+/* ---------- Content portfolio link (hero) ---------- */
+.folio { margin-top: 18px; display: flex; align-items: center; gap: 14px; max-width: 520px; padding: 12px 20px 12px 12px; background: var(--paper); border: 2px solid var(--ink); border-radius: 22px; color: var(--ink); text-decoration: none; box-shadow: 5px 5px 0 var(--sky); transition: transform .2s, box-shadow .2s; }
+.folio:hover { color: var(--ink); transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--sun); }
+.folio__ic { flex: none; width: 54px; height: 54px; border-radius: 16px; background: var(--sun); display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 10px; }
+.folio__ic i { border-radius: 5px; background: var(--paper); }
+.folio__ic i:first-child { grid-row: span 2; background: var(--sky); position: relative; }
+.folio__ic i:first-child::after { content: ''; position: absolute; left: 6px; top: 50%; transform: translateY(-50%); border-left: 8px solid var(--sky-deep); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.folio__txt { display: grid; gap: 2px; min-width: 0; }
+.folio__txt b { font: 500 1.02rem var(--display); }
+.folio__txt span { font-size: .92rem; line-height: 1.4; color: var(--ink-soft); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero__text > .folio { animation: rise .7s .3s cubic-bezier(.2, .7, .2, 1) both; }
+  .folio__ic i { animation: tilebob 3s ease-in-out infinite; }
+  .folio__ic i:nth-child(2) { animation-delay: .4s; } .folio__ic i:nth-child(3) { animation-delay: .8s; }
+}
+@keyframes tilebob { 50% { transform: scale(.82); } }
