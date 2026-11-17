@@ -154,11 +154,11 @@ def page(slug, c, others):
 <div class="progress" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap top__in">
-    <a class="brand" href="../index.html" data-en="Aisylu Zaripova">Айсылу Зарипова</a>
+    <a class="brand" href="../" data-en="Aisylu Zaripova">Айсылу Зарипова</a>
     <nav class="nav" aria-label="Навигация">
-      <a href="../index.html#cases" data-en="All cases">Все кейсы</a>
-      <a href="../index.html#services" data-en="Services">Услуги</a>
-      <a href="../index.html#reviews" data-en="Reviews">Отзывы</a>
+      <a href="../#cases" data-en="All cases">Все кейсы</a>
+      <a href="../#services" data-en="Services">Услуги</a>
+      <a href="../#reviews" data-en="Reviews">Отзывы</a>
     </nav>
     <div class="top__act">
       <div class="lang" role="group" aria-label="Язык / Language">
@@ -174,7 +174,7 @@ def page(slug, c, others):
   <section class="chero">
     <div class="wrap chero__in">
       <div class="chero__text">
-        <a class="back" href="../index.html#cases" data-en="Back to all cases">Ко всем кейсам</a>
+        <a class="back" href="../#cases" data-en="Back to all cases">Ко всем кейсам</a>
         <p class="chero__meta"{en(c.get("meta_en"))}>{esc(c["meta"])}</p>
         <h1{en(c.get("name_en"))}>{esc(c["name"])}</h1>
         <p class="chero__lead"{en(c.get("lead_en"))}>{esc(c["lead"])}</p>
@@ -217,7 +217,7 @@ def page(slug, c, others):
   <section class="wrap more">
     <h2 data-en="More cases">Другие кейсы</h2>
     <ul class="more__list">{more}</ul>
-    <a class="btn btn--ghost" href="../index.html#cases" data-en="All cases">Все кейсы</a>
+    <a class="btn btn--ghost" href="../#cases" data-en="All cases">Все кейсы</a>
   </section>
 </main>
 

@@ -3,10 +3,11 @@
   doc.classList.add('js');
 
   /* ---------- Language switch ---------- */
+  var descTag = document.querySelector('meta[name="description"]');
   var META = {
     ru: {
       title: document.title,
-      desc: document.querySelector('meta[name="description"]').content
+      desc: descTag ? descTag.content : ''
     },
     en: {
       title: document.body.dataset.titleEn || 'Aisylu Zaripova — international marketer and SMM specialist',
@@ -26,7 +27,7 @@
     ariaNodes.forEach(function (el) { el.setAttribute('aria-label', el.getAttribute('data-' + lang + '-aria-label')); });
     doc.lang = lang;
     document.title = META[lang].title;
-    document.querySelector('meta[name="description"]').content = META[lang].desc;
+    if (descTag) descTag.content = META[lang].desc;
     document.querySelectorAll('.lang button').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
