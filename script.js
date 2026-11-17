@@ -91,10 +91,10 @@
       modal.querySelector('.cmodal__list').innerHTML = hasHl ? '' : (list ? '<ul>' + list.innerHTML + '</ul>' : '');
       modal.querySelector('.cmodal__extra').innerHTML = extra.innerHTML;
     }
-    document.querySelectorAll('.case__open').forEach(function (b) {
+    document.querySelectorAll('.case__open, .best__open').forEach(function (b) {
       b.addEventListener('click', function () {
         opener = b;
-        fill(b.closest('.case'));
+        fill(b.dataset.case ? document.getElementById(b.dataset.case) : b.closest('.case'));
         modal.showModal();
         modal.querySelector('.cmodal__in').scrollTop = 0;
         doc.classList.add('is-modal');
@@ -102,6 +102,9 @@
     });
     document.querySelectorAll('.case img').forEach(function (img) {
       img.addEventListener('click', function () { img.closest('.case').querySelector('.case__open').click(); });
+    });
+    document.querySelectorAll('.best__media').forEach(function (m) {
+      m.addEventListener('click', function () { m.closest('.best__card').querySelector('.best__open').click(); });
     });
     modal.querySelector('.cmodal__close').addEventListener('click', function () { modal.close(); });
     modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
@@ -161,7 +164,7 @@
   }
 
   var groups = ['.about__pic', '.about__text', '.sec h2', '.sec__lead', '.res', '.tools > div', '.chips--lg li',
-    '.services li', '.ai__list li', '.tabs', '.rev', '.contact__box', '.cnums li', '.more__list li', '.shots-note'];
+    '.services li', '.ai__list li', '.best__card', '.tabs', '.rev', '.contact__box', '.cnums li', '.more__list li', '.shots-note'];
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
       if (!en.isIntersecting) return;
